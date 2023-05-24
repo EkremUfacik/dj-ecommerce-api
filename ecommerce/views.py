@@ -58,7 +58,7 @@ class OrderItemMVS(ModelViewSet):
         else:
             OrderItem.objects.create(user_id=request.user.id, item_id=request.data["item_id"], quantity=request.data["quantity"])
             data ={
-                "message": "ADDED"
+                "message": "Product Added"
             }
             return Response(data, status=status.HTTP_201_CREATED)
 

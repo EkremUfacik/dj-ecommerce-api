@@ -6,7 +6,8 @@ from django.utils.text import slugify
 CATEGORY_CHOICES = (
     ('P', 'Phones'),
     ('T', 'Tablets'),
-    ('C', 'Computers')
+    ('C', 'Computers'),
+    ('M', 'Monitors')
 )
 
 class Item(models.Model):
