@@ -51,10 +51,13 @@ class OrderItemMVS(ModelViewSet):
         orderItem_queryset = OrderItem.objects.filter(user_id=request.user.id, item_id=request.data["item_id"], ordered=False)
         
         if orderItem_queryset.exists():
+            order_item = orderItem_queryset.first()
+            order_item.quantity += 1
+            order_item.save()
             data ={
-                "message": "You already have this item"
+                "message": "Item quantity updated!"
             }
-            return Response(data, status=status.HTTP_201_CREATED)
+            return Response(data, status=status.HTTP_200_OK)
         else:
             OrderItem.objects.create(user_id=request.user.id, item_id=request.data["item_id"], quantity=request.data["quantity"])
             data ={
